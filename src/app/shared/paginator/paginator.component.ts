@@ -8,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class PaginatorComponent implements OnInit{
   numberOfPages = 5;
   currentpage = 1;
-  pageOptions!: number[];
+  pageOptions: number[]= [];
 
   constructor(){
     this.pageOptions = [

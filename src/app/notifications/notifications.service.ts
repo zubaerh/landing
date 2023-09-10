@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject, scan } from 'rxjs';
+import { Observable, Subject, of, scan } from 'rxjs';
 
 export interface Command {
   id: number;
@@ -11,8 +11,8 @@ export interface Command {
   providedIn: 'root'
 })
 export class NotificationsService {
-  messagesInput!: Subject<Command>;
-  messagesOutput!: Observable<Command[]>;
+  messagesInput: Subject<Command>= new Subject();
+  messagesOutput: Observable<Command[]>= of([]);
 
   constructor() {
     this.messagesInput = new Subject<Command>();

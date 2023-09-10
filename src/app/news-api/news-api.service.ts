@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject, tap, map, switchMap, Observable, pluck } from 'rxjs';
+import { Subject, tap, map, switchMap, Observable, pluck, of } from 'rxjs';
 import { HttpParams, HttpClient } from '@angular/common/http';
 
 export interface Article {
@@ -24,9 +24,9 @@ export class NewsApiService {
   private apiKey = 'a8e06793c5d54488a83bb6a934632a11';
   private country = 'us';
 
-  private pagesInput!: Subject<number>;
-  pagesOutput!: Observable<Article[]>;
-  numberOfPages!: Subject<number>;
+  private pagesInput: Subject<number>= new Subject();
+  pagesOutput: Observable<Article[]>= of([]);
+  numberOfPages: Subject<number>= new Subject();
 
   constructor(private http: HttpClient) { 
     this.numberOfPages = new Subject();
